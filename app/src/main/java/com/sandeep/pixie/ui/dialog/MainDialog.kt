@@ -20,6 +20,7 @@ class MainDialog: DialogFragment() {
     private lateinit var url: String
     private lateinit var desc: String
 
+    // Creating singleton object of the class
     companion object {
         private var instance: MainDialog? = null
 

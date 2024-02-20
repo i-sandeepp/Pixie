@@ -1,5 +1,9 @@
 # Pixie
 
+> [!important]
+> * App Architecture - MVVM
+> * Dependency Injected - Yes
+
 ## Splash Screen
 
 

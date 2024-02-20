@@ -32,11 +32,13 @@ class MainAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
+        // Inflating data into adapter items
         holder.bindData(
             items[position].author,
             DEMO_DESCRIPTION,
             items[position].download_url)
 
+        // Click listener to show the dialog
         holder.card.setOnClickListener {
             listener.onRowSelected(
                 items[position].id,

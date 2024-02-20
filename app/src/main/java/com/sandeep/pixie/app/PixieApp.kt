@@ -14,6 +14,7 @@ class PixieApp: Application() {
     override fun onCreate() {
         super.onCreate()
 
+        // Default Light Mode
         AppCompatDelegate.setDefaultNightMode(
             AppCompatDelegate.MODE_NIGHT_NO
         )

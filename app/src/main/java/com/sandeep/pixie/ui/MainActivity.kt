@@ -43,18 +43,23 @@ class MainActivity : AppCompatActivity(), RowSelectListener {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // Initializing lateinit properties
         mainData = ArrayList()
         mainAdapter = MainAdapter(this, mainData, this)
 
+        // Initializing recycler view with adapter
         binding.mainRecycler.layoutManager = LinearLayoutManager(this)
         binding.mainRecycler.adapter = mainAdapter
 
         setupListener()
         setupObservers()
 
-        viewModel.getList(2, 3)
+        viewModel.getList(2, 20)
     }
 
+    /**
+     * Refreshing list data
+     */
     @SuppressLint("NotifyDataSetChanged")
     private fun createData(data: PixieResponse) {
         mainData = data
@@ -62,20 +67,29 @@ class MainActivity : AppCompatActivity(), RowSelectListener {
         mainAdapter.notifyDataSetChanged()
     }
 
+    /**
+     * Setting up listeners
+     */
     private fun setupListener() {
 
         binding.mainSwipe.setOnRefreshListener {
             if (!isLoading) {
-                viewModel.getList(2, 3)
+                viewModel.getList(2, 20)
             }
         }
     }
 
+    /**
+     * Showing app dialog
+     */
     private fun showDialog(url: String, desc: String) {
         dialog.setContext(url, desc)
         dialog.show(supportFragmentManager, "Dialog")
     }
 
+    /**
+     * Setting up network observers
+     */
     private fun setupObservers() {
 
         viewModel.pixieResponse.observe(this) {
