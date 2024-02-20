@@ -12,6 +12,7 @@ import com.bumptech.glide.Glide
 import com.sandeep.pixie.R
 import com.sandeep.pixie.interfaces.RowSelectListener
 import com.sandeep.pixie.model.PixieItem
+import com.sandeep.pixie.utils.DEMO_DESCRIPTION
 import java.net.URL
 
 /**
@@ -33,14 +34,14 @@ class MainAdapter(
 
         holder.bindData(
             items[position].author,
-            items[position].download_url,
+            DEMO_DESCRIPTION,
             items[position].download_url)
 
         holder.card.setOnClickListener {
             listener.onRowSelected(
                 items[position].id,
                 items[position].download_url,
-                items[position].download_url
+                DEMO_DESCRIPTION
             )
         }
     }
